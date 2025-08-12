@@ -1,0 +1,230 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #6b3ba2, #a972cb);
+  color: #333;
+}
+
+header#header {
+  text-align: center;
+  padding: 2em;
+  color: white;
+}
+ul.actions, ul.features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul, ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav#nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  background-color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 1em 0;
+}
+
+nav#nav ul li {
+  margin: 0 1em;
+}
+
+nav#nav ul li a {
+  text-decoration: none;
+  color: #555;
+  list-style-type: none;
+}
+
+nav#nav ul li a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #a972cb;
+}
+
+section.main {
+  background-color: white;
+  padding: 3em;
+  text-align: center;
+}
+
+ul.features {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+}
+
+ul.features li {
+  width: 30%;
+  text-align: center;
+}
+
+.icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.button {
+  background-color: #a972cb;
+  color: white;
+  padding: 0.7em 1.5em;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.button.primary {
+  background-color: #6b3ba2;
+}
+
+footer#footer {
+  text-align: center;
+  padding: 2em;
+  color: white;
+}
+/* Intro con imagen al lado del texto */
+.intro-section {
+  background-color: white;
+  padding: 3em 2em;
+  list-style-type: none;
+}
+
+.intro-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.intro-content .text {
+  flex: 1 1 400px;
+}
+
+.intro-content .image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.intro-content .image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 5px solid #eee;
+}
+@media (max-width: 768px) {
+  .intro-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-content .text,
+  .intro-content .image {
+    flex: 1 1 100%;
+  }
+}
+/* MENÚ FIJO EN LA PARTE SUPERIOR */
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(255, 0, 0);
+  z-index: 1000; /* Asegura que esté por encima del contenido */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra ligera opcional */
+  list-style-type: none;
+}
+
+/* Ajustamos el espacio del cuerpo para que no quede oculto bajo el menú */
+body {
+  padding-top: 70px; /* Ajusta este valor según la altura del nav */
+}
+#nav {
+  transition: background-color 0.3s ease;
+}
+/* Sección de filtros y grilla de lenguajes */
+.language-filter-section {
+  background-color: white;
+  padding: 3em 2em;
+  text-align: center;
+}
+
+/* Botones de filtro (radio buttons custom) */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+.filter-buttons label {
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #333;
+}
+
+.filter-buttons input[type="radio"] {
+  accent-color: #a972cb;
+  transform: scale(1.2);
+}
+
+/* Grilla responsiva para los lenguajes */
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Tarjetas individuales de lenguaje */
+.language-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid transparent;
+  cursor: not-allowed;
+  transition: 0.3s ease;
+  opacity: 0.5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Estado activo cuando corresponde al filtro */
+.language-card.active {
+  border-color: #6b3ba2;
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(107, 59, 162, 0.3);
+}
+
+.language-card img {
+  max-width: 60px;
+  margin-bottom: 10px;
+}
+
+.language-card span {
+  display: block;
+  font-size: 0.9em;
+  color: #333;
+}
+
+/* Responsive extra */
+@media (max-width: 600px) {
+  .filter-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+}
