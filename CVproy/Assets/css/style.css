@@ -151,74 +151,48 @@ body {
 }
 /* Sección de filtros y grilla de lenguajes */
 .language-filter-section {
-  background-color: white;
-  padding: 3em 2em;
   text-align: center;
+  margin: 3rem auto;
+  padding: 2rem;
 }
 
-/* Botones de filtro (radio buttons custom) */
 .filter-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 2em;
-  margin-bottom: 2em;
-  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 }
 
 .filter-buttons label {
-  font-weight: bold;
+  margin: 0 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  color: #333;
+  font-weight: bold;
 }
 
-.filter-buttons input[type="radio"] {
-  accent-color: #a972cb;
-  transform: scale(1.2);
-}
-
-/* Grilla responsiva para los lenguajes */
 .language-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
+  gap: 2rem;
+  justify-items: center;
+  max-width: 900px; /* ancho máximo para que quede centrado */
   margin: 0 auto;
 }
 
-/* Tarjetas individuales de lenguaje */
-.language-card {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 10px;
+.language-item {
   text-align: center;
-  border: 2px solid transparent;
-  cursor: not-allowed;
-  transition: 0.3s ease;
-  opacity: 0.5;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
 }
 
-/* Estado activo cuando corresponde al filtro */
-.language-card.active {
-  border-color: #6b3ba2;
-  cursor: pointer;
-  opacity: 1;
-  box-shadow: 0 0 10px rgba(107, 59, 162, 0.3);
+.language-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: all 0.3s ease;
 }
 
-.language-card img {
-  max-width: 60px;
-  margin-bottom: 10px;
+/* Atenuados */
+.language-item.dimmed {
+  opacity: 0.3;
+  transform: scale(0.9);
 }
 
-.language-card span {
-  display: block;
-  font-size: 0.9em;
-  color: #333;
-}
 
 /* Responsive extra */
 @media (max-width: 600px) {
