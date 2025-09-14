@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       items.forEach(item => {
         if (category === "all") {
+          // Todos iluminados
           item.classList.remove("dimmed");
         } else {
+          // Solo los de la categoría elegida iluminados
           const isMatch = item.dataset.category === category;
           if (isMatch) {
             item.classList.remove("dimmed");
