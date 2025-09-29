@@ -5,44 +5,130 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contáctame</title>
   <style>
-    body{font-family:system-ui,Arial;max-width:720px;margin:2rem auto;padding:1rem}
-    label{display:block;margin-top:0.75rem}
-    input,textarea{width:100%;padding:0.5rem;margin-top:0.25rem;border:1px solid #ccc;border-radius:6px}
-    .error{color:#b00020;font-size:0.9rem}
-    .success{color:#0a8a3f;font-weight:600}
-    button{margin-top:1rem;padding:0.6rem 1rem;border-radius:8px}
-    .hidden{display:none}
+    
+    body {
+      font-family: system-ui, Arial;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #8b3de4, #dcb1f7);
+    }
+
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0077cc;
+      outline: none;
+    }
+
+    .error {
+      color: #b00020;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+    }
+
+    .success {
+      color: #0a8a3f;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      background: #0077cc;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #005fa3;
+    }
+
+    button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+
+    #status {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h1>Contáctame</h1>
+  <div class="container">
+    <h1>Contáctame</h1>
 
-  <form id="contactForm" novalidate>
-    <label>
-      Nombre <span class="error" id="errName"></span>
-      <input id="name" name="name" type="text" maxlength="120" required />
-    </label>
+    <form id="contactForm" novalidate>
+      <label>
+        Nombre <span class="error" id="errName"></span>
+        <input id="name" name="name" type="text" maxlength="120" required />
+      </label>
 
-    <label>
-      Correo <span class="error" id="errEmail"></span>
-      <input id="email" name="email" type="email" maxlength="254" required />
-    </label>
+      <label>
+        Correo <span class="error" id="errEmail"></span>
+        <input id="email" name="email" type="email" maxlength="254" required />
+      </label>
 
-    <label>
-      Mensaje <span class="error" id="errMessage"></span>
-      <textarea id="message" name="message" rows="6" maxlength="2000" required></textarea>
-    </label>
+      <label>
+        Mensaje <span class="error" id="errMessage"></span>
+        <textarea id="message" name="message" rows="6" maxlength="2000" required></textarea>
+      </label>
 
-    <button id="sendBtn" type="submit">Enviar</button>
-    <p id="status" class="hidden"></p>
-  </form>
+      <button id="sendBtn" type="submit">Enviar</button>
+      <p id="status" class="hidden"></p>
+    </form>
+  </div>
 
   <script>
   // --- CONFIG: usa directamente tu backend de Render ---
   const DJANGO_API_ENDPOINT = "https://backcv-fh2c.onrender.com/api/contacts/";
 
   function validateEmail(email){
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
   }
 
   const form = document.getElementById('contactForm');
