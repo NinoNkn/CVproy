@@ -1,8 +1,9 @@
 body {
   font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom, #6b3ba2, #a972cb);
+  max-width: 1200px;  
+  margin: 0 auto;     
+  padding: 0 px;    
+  background: linear-gradient(to bottom, #8b3de4, #dcb1f7);
   color: #333;
 }
 
@@ -257,4 +258,114 @@ body {
 #tools-tech .skill-card span {
   font-size: 2rem;
   display: block;
+}
+.project-link {
+  text-decoration: none;
+  color: inherit;   /* mantiene el color original del texto */
+}
+
+.project-card {
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+.projects {
+  padding: 50px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.filter-buttons {
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 8px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #ff4d6d;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.project-info h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #000000;
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.tags span {
+  display: inline-block;
+  background: #333;
+  color: #ddd;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin: 2px;
+  font-size: 0.8rem;
+}
+
+.links {
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 8px;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
 }
