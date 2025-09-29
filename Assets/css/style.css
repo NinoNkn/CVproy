@@ -203,3 +203,58 @@ body {
     gap: 1em;
   }
 }
+/* Sección general */
+#tools-tech {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  background: #ffffff;
+  padding: 30px;
+}
+
+#tools-tech h2 {
+  margin-bottom: 20px;
+}
+
+/* Botones */
+#tools-tech .filter-buttons {
+  margin-bottom: 20px;
+}
+
+#tools-tech .filter-buttons button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #e8b5ff;
+  color: #ffffff;
+  transition: background 0.3s;
+}
+
+#tools-tech .filter-buttons button.active {
+  background: rgb(180, 52, 255);
+}
+
+/* Grid de skills */
+#tools-tech .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+#tools-tech .skill-card {
+  background: #e8c1ff;
+  padding: 15px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+#tools-tech .skill-card:hover {
+  transform: scale(1.05);
+}
+
+#tools-tech .skill-card span {
+  font-size: 2rem;
+  display: block;
+}

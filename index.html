@@ -51,7 +51,8 @@
 
     <!-- Imagen al lado del texto -->
     <div class="image">
-      <img src="Assets/img/Nino.jpg" alt="Imagen introductoria">
+      <img src="Assets/img/Nino.jpg
+      " alt="Imagen introductoria">
     </div>
   </div>
 </section>
@@ -91,58 +92,67 @@
     </ul>
   </section>
 
-  <!-- Llamado a la acción (CTA) -->
 
-  <section class="language-filter-section">
-  <h2>Lenguajes y Tecnologías</h2>
+<section id="tools-tech">
+  <h2> Lenguajes y Herramientas</h2>
 
-  <!-- Botones de filtro -->
+  <!-- Botones -->
   <div class="filter-buttons">
-    <label><input type="radio" name="category" value="all" checked /> Todos</label>
-    <label><input type="radio" name="category" value="frontend" /> Frontend</label>
-    <label><input type="radio" name="category" value="backend" /> Backend</label>
+    <button class="active" data-category="all">Main Stack</button>
+    <button data-category="frontend">Frontend</button>
+    <button data-category="backend">Backend</button>
+    <button data-category="devops">DevOps</button>
   </div>
 
-  <!-- Mosaico 3x3 -->
-  <div class="language-grid" id="languagesGrid">
-    <div class="language-item" data-category="frontend">
-      <img src="Assets/img/html.png" alt="HTML">
-      <p>HTML</p>
+  <!-- Tarjetas -->
+  <div class="skills-grid">
+    <div class="skill-card" data-category="frontend all">
+      <img src="Assets/img/html.png" alt="HTML5">
+      <p>HTML5</p>
     </div>
-    <div class="language-item" data-category="frontend">
-      <img src="Assets/img/css.png" alt="CSS">
-      <p>CSS</p>
+    <div class="skill-card" data-category="frontend all">
+      <img src="Assets/img/Css.png" alt="HTML5">
+      <p>CSS3</p>
     </div>
-    <div class="language-item" data-category="frontend">
-      <img src="Assets/img/js.png" alt="JavaScript">
+    <div class="skill-card" data-category="frontend all">
+      <img src="Assets/img/JS.png" alt="HTML5">
       <p>JavaScript</p>
     </div>
-    <div class="language-item" data-category="backend">
-      <img href="Assets/img/diploma-jupyter-notebook.pdf" src="Assets/img/nodejs.png" alt="Node.js">
-      <p>Node.js</p>
-    </div>
-    <div class="language-item" data-category="backend">
-      <img src="Assets/img/python.png" alt="Python">
-      <p>Python</p>
-    </div>
-    <div class="language-item" data-category="backend">
-      <img src="Assets/img/mysql.png" alt="MySQL">
-      <p>MySQL</p>
-    </div>
-    <div class="language-item" data-category="frontend">
-      <img src="Assets/img/react.png" alt="React">
-      <p>React</p>
-    </div>
-    <div class="language-item" data-category="backend">
-      <img src="Assets/img/java.png" alt="Java">
+    <div class="skill-card" data-category="frontend all">
+      <img src="Assets/img/java.png" alt="HTML5">
       <p>Java</p>
     </div>
-    <div class="language-item" data-category="frontend">
-      <img src="Assets/img/github.png" alt="GitHub">
-      <p>Git y GitHub</p>
+    <div class="skill-card" data-category="frontend all">
+      <img src="Assets/img/react.png" alt="HTML5">
+      <p>React</p>
+    </div>
+    <div class="skill-card" data-category="backend all">
+      <img src="Assets/img/nodejs.png" alt="HTML5">
+      <p>Node.js</p>
+    </div>
+    <div class="skill-card" data-category="backend all">
+      <img src="Assets/img/MySQL.png" alt="HTML5">
+      <p>MySQL</p>
+    </div>
+    <div class="skill-card" data-category="devops all">
+      <img src="Assets/img/ballena.png" alt="HTML5">
+      <p>Docker</p>
+    </div>
+    <div class="skill-card" data-category="devops all">
+      <img src="Assets/img/git.png" alt="HTML5">
+      <p>Git</p>
+    </div>
+    <div class="skill-card" data-category="devops all">
+      <img src="Assets/img/github.png" alt="HTML5">
+      <p>GitHub</p>
     </div>
   </div>
 </section>
+
+<!-- Enlazar CSS y JS -->
+<link rel="stylesheet" href="Assets/css/style.css">
+<script src="Assets/js/main.js" defer></script>
+
 
 
   <!-- Pie de página -->

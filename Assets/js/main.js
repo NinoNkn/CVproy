@@ -1,25 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const filterRadios = document.querySelectorAll("input[name='category']");
-  const items = document.querySelectorAll(".language-item");
+const buttons = document.querySelectorAll("#tools-tech .filter-buttons button");
+const cards = document.querySelectorAll("#tools-tech .skill-card");
 
-  filterRadios.forEach(radio => {
-    radio.addEventListener("change", () => {
-      const category = radio.value;
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    // Quitar clase activa de todos
+    buttons.forEach(btn => btn.classList.remove("active"));
+    // Activar el botón actual
+    button.classList.add("active");
 
-      items.forEach(item => {
-        if (category === "all") {
-          // Todos iluminados
-          item.classList.remove("dimmed");
-        } else {
-          // Solo los de la categoría elegida iluminados
-          const isMatch = item.dataset.category === category;
-          if (isMatch) {
-            item.classList.remove("dimmed");
-          } else {
-            item.classList.add("dimmed");
-          }
-        }
-      });
+    const category = button.dataset.category;
+
+    // Filtrar tarjetas
+    cards.forEach(card => {
+      if (category === "all" || card.dataset.category.includes(category)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
     });
   });
 });
