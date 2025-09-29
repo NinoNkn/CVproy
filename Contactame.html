@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contáctame</title>
+  <style>
+    body{font-family:system-ui,Arial;max-width:720px;margin:2rem auto;padding:1rem}
+    label{display:block;margin-top:0.75rem}
+    input,textarea{width:100%;padding:0.5rem;margin-top:0.25rem;border:1px solid #ccc;border-radius:6px}
+    .error{color:#b00020;font-size:0.9rem}
+    .success{color:#0a8a3f;font-weight:600}
+    button{margin-top:1rem;padding:0.6rem 1rem;border-radius:8px}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <h1>Contáctame</h1>
+
+  <form id="contactForm" novalidate>
+    <label>
+      Nombre <span class="error" id="errName"></span>
+      <input id="name" name="name" type="text" maxlength="120" required />
+    </label>
+
+    <label>
+      Correo <span class="error" id="errEmail"></span>
+      <input id="email" name="email" type="email" maxlength="254" required />
+    </label>
+
+    <label>
+      Mensaje <span class="error" id="errMessage"></span>
+      <textarea id="message" name="message" rows="6" maxlength="2000" required></textarea>
+    </label>
+
+    <button id="sendBtn" type="submit">Enviar</button>
+    <p id="status" class="hidden"></p>
+  </form>
+
+  <script>
+  // --- CONFIG: usa directamente tu backend de Render ---
+  const DJANGO_API_ENDPOINT = "https://TU-APP.onrender.com/api/contacts/";
+
+  function validateEmail(email){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  const form = document.getElementById('contactForm');
+  const sendBtn = document.getElementById('sendBtn');
+  const statusP = document.getElementById('status');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // limpiar errores previos
+    document.getElementById('errName').textContent = '';
+    document.getElementById('errEmail').textContent = '';
+    document.getElementById('errMessage').textContent = '';
+    statusP.className = 'hidden';
+    statusP.textContent = '';
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    // validación
+    let ok = true;
+    if(name.length < 2){ document.getElementById('errName').textContent = 'Nombre muy corto'; ok = false; }
+    if(!validateEmail(email)){ document.getElementById('errEmail').textContent = 'Correo inválido'; ok = false; }
+    if(message.length < 6){ document.getElementById('errMessage').textContent = 'Mensaje muy corto'; ok = false; }
+    if(!ok) return;
+
+    sendBtn.disabled = true;
+
+    try {
+      const payload = { name, email, message };
+
+      const res = await fetch(DJANGO_API_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if(res.status === 201 || res.ok){
+        statusP.className = 'success';
+        statusP.textContent = '¡Gracias! Tu mensaje fue enviado.';
+        form.reset();
+      } else {
+        const json = await res.json().catch(()=>null);
+        statusP.className = 'error';
+        statusP.textContent = 'Error: ' + (json?.detail || 'El servidor rechazó la petición.');
+        console.error('API error', json);
+      }
+    } catch (err) {
+      console.error(err);
+      statusP.className = 'error';
+      statusP.textContent = 'Ocurrió un error de red. Intenta de nuevo.';
+    } finally {
+      setTimeout(()=> sendBtn.disabled = false, 3000);
+      statusP.classList.remove('hidden');
+    }
+  });
+  </script>
+</body>
+</html>
