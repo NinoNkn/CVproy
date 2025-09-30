@@ -34,39 +34,39 @@
   <div id="recetasContainer" class="grid">Cargando...</div>
 
   <script>
-    const API_URL = "https://backcv-fh2c.onrender.com/api/recetas/";
+const RECETAS_ENDPOINT = "https://backcv-fh2c.onrender.com/api/recetas/";
 
-    async function loadRecetas(){
-      try {
-        const res = await fetch(API_URL);
-        if(!res.ok) throw new Error("Error al cargar recetas");
-        const recetas = await res.json();
+async function loadRecetas(){
+  try{
+    const res = await fetch(RECETAS_ENDPOINT);
+    if(!res.ok) throw new Error("Error cargando recetas");
+    const recetas = await res.json();
 
-        const container = document.getElementById("recetasContainer");
-        container.innerHTML = "";
+    const container = document.getElementById("recetasContainer");
+    container.innerHTML = "";
 
-        recetas.forEach(r => {
-          const card = document.createElement("div");
-          card.className = "card";
-          card.innerHTML = `
-            <img src="${r.imagen}" alt="${r.titulo}">
-            <div class="card-content">
-              <h2>${r.titulo}</h2>
-              <p>${r.resumen}</p>
-              <p class="tags">🔑 ${r.palabras_clave}</p>
-              <a href="/detalle.html?id=${r.id}" class="detail-link">Ver detalle</a>
-            </div>
-          `;
-          container.appendChild(card);
-        });
+    recetas.forEach(receta=>{
+      const item = document.createElement("div");
+      item.className = "receta-item";
 
-      } catch(err) {
-        console.error(err);
-        document.getElementById("recetasContainer").innerText = "No se pudieron cargar las recetas.";
-      }
-    }
+      item.innerHTML = `
+        <img src="${receta.imagen_url}" alt="${receta.titulo}" style="max-width:100%; border-radius:8px;" />
+        <h2>${receta.titulo}</h2>
+        <p><strong>Resumen:</strong> ${receta.resumen}</p>
+        <p>${receta.descripcion}</p>
+        <small><em>Palabras clave: ${receta.palabras_clave}</em></small>
+      `;
 
-    loadRecetas();
-  </script>
+      container.appendChild(item);
+    });
+
+  }catch(err){
+    console.error(err);
+    document.getElementById("recetasContainer").innerText = "No se pudieron cargar las recetas.";
+  }
+}
+
+loadRecetas();
+</script>
 </body>
 </html>
