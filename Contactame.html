@@ -128,7 +128,7 @@
   const DJANGO_API_ENDPOINT = "https://backcv-fh2c.onrender.com/api/contacts/";
 
   function validateEmail(email){
-    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
   const form = document.getElementById('contactForm');
