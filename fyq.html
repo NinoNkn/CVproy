@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Preguntas Frecuentes</title>
+  <style>
+    body{font-family:system-ui,Arial;max-width:800px;margin:2rem auto;padding:1rem;line-height:1.6}
+    h1{text-align:center;margin-bottom:2rem}
+    .faq-item{border-bottom:1px solid #ddd;padding:1rem 0}
+    .faq-question{cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600}
+    .faq-question:hover{color:#0066cc}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+    .faq-answer.open{max-height:500px;}
+    .arrow{transition:transform 0.3s ease}
+    .arrow.rotate{transform:rotate(90deg)}
+  </style>
+</head>
+<body>
+  <h1>Preguntas Frecuentes</h1>
+  <div id="faqContainer">Cargando preguntas...</div>
+
+  <script>
+  const FAQ_ENDPOINT = "https://backcv-fh2c.onrender.com/api/faq/";
+
+  async function loadFAQs(){
+    try{
+      const res = await fetch(FAQ_ENDPOINT);
+      if(!res.ok) throw new Error("Error cargando FAQs");
+      const faqs = await res.json();
+
+      const container = document.getElementById("faqContainer");
+      container.innerHTML = "";
+
+      faqs.forEach(faq=>{
+        const item = document.createElement("div");
+        item.className = "faq-item";
+
+        const q = document.createElement("div");
+        q.className = "faq-question";
+        q.innerHTML = `<span>${faq.question}</span><span class="arrow">▶</span>`;
+
+        const a = document.createElement("div");
+        a.className = "faq-answer";
+        a.innerHTML = `<p>${faq.answer}</p>`;
+
+        q.addEventListener("click", ()=>{
+          a.classList.toggle("open");
+          q.querySelector(".arrow").classList.toggle("rotate");
+        });
+
+        item.appendChild(q);
+        item.appendChild(a);
+        container.appendChild(item);
+      });
+
+    }catch(err){
+      console.error(err);
+      document.getElementById("faqContainer").innerText = "No se pudieron cargar las preguntas.";
+    }
+  }
+
+  loadFAQs();
+  </script>
+</body>
+</html>
